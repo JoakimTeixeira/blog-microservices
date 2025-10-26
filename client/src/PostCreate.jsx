@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { postFetch } from "./fetchClient";
 
 const createPost = async (title) =>
@@ -9,6 +9,7 @@ const createPost = async (title) =>
   });
 
 export default function PostCreate() {
+  const feedbackId = useId();
   const [fadeOut, setFadeOut] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const queryClient = useQueryClient();
@@ -74,7 +75,8 @@ export default function PostCreate() {
           className="input"
           disabled={isPending}
           aria-invalid={isError}
-          aria-describedby="form-feedback"
+          aria-describedby={feedbackId}
+          autoFocus={isError}
         />
       </fieldset>
 
@@ -82,6 +84,7 @@ export default function PostCreate() {
         className="btn btn-primary w-full"
         type="submit"
         disabled={isPending || !title.trim()}
+        aria-busy={isPending}
       >
         {isPending && (
           <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
@@ -91,16 +94,20 @@ export default function PostCreate() {
 
       {showMessage && (isError || isSuccess) && (
         <div
-          id="form-feedback"
+          id={feedbackId}
           className={`min-h-6 ${fadeOut ? "animate-fade-out" : "animate-fade-in"}`}
         >
           {isError && (
-            <p role="alert" className="text-sm text-red-600">
+            <p
+              role="alert"
+              aria-live="assertive"
+              className="text-sm text-red-600"
+            >
               {error.message}
             </p>
           )}
           {isSuccess && (
-            <output className="text-sm text-green-600">
+            <output aria-live="polite" className="text-sm text-green-600">
               Post created successfully!
             </output>
           )}
