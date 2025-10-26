@@ -25,14 +25,19 @@ export default function PostList() {
   if (!orderedPosts.length) return <p>No posts available.</p>;
 
   return (
-    <div className="flex flex-row flex-wrap justify-between gap-4">
-      {orderedPosts.map((post) => (
-        <div className="card w-[30%] min-w-[280px]" key={post.id}>
-          <div className="card-body">
-            <h3 className="text-lg font-semibold mb-3">{post.title}</h3>
-          </div>
-        </div>
-      ))}
-    </div>
+    <section aria-labelledby="post-list">
+      <h2 id="post-list" className="sr-only">
+        Posts
+      </h2>
+      <ul className="flex flex-wrap justify-center gap-4">
+        {orderedPosts.map((post) => (
+          <li className="card w-[30%] min-w-[250px]" key={post.id}>
+            <article className="card-body">
+              <h3 className="mb-3 text-lg font-semibold">{post.title}</h3>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
