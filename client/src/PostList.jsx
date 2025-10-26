@@ -20,16 +20,29 @@ export default function PostList() {
     return list.sort((a, b) => a.title.localeCompare(b.title));
   }, [posts]);
 
-  if (isLoading) return <p>Loading posts...</p>;
-  if (isError) return <p role="alert">Error: {error.message}</p>;
-  if (!orderedPosts.length) return <p>No posts available.</p>;
+  if (isLoading) return <output aria-live="polite">Loading posts...</output>;
+
+  if (isError)
+    return (
+      <p role="alert" aria-live="assertive">
+        Error: {error.message}
+      </p>
+    );
+
+  if (!orderedPosts.length)
+    return <output aria-live="polite">No posts available.</output>;
 
   return (
-    <section aria-labelledby="post-list">
+    <section>
       <h2 id="post-list" className="sr-only">
         Posts
       </h2>
-      <ul className="flex flex-wrap justify-center gap-4">
+
+      <ul
+        className="flex flex-wrap justify-center gap-4"
+        aria-labelledby="post-list"
+        aria-live="polite"
+      >
         {orderedPosts.map((post) => (
           <li className="card w-[30%] min-w-[250px]" key={post.id}>
             <article className="card-body">
