@@ -30,6 +30,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  @apply bg-gray-50 p-8 dark:bg-gray-900;
 }
 
 h1 {
@@ -45,17 +47,58 @@ h1 {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 @layer components {
   .card {
-    @apply rounded-xl border border-gray-200 shadow-sm bg-white;
+    @apply rounded-xl border border-gray-200 bg-white shadow-sm;
   }
 
   .card-body {
     @apply p-4;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .input {
+    @apply block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    @apply transition-opacity duration-500;
+    opacity: 1;
+    animation: fade-in 0.3s ease-in-out forwards;
+  }
+
+  .animate-fade-out {
+    @apply transition-opacity duration-500;
+    opacity: 0;
+    animation: fade-out 0.5s ease-in-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 }
