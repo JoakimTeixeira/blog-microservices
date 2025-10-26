@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
+import CommentList from "./CommentList";
 import { postFetch } from "./fetchClient";
 
 const fetchPosts = async () => postFetch("posts");
@@ -47,6 +48,7 @@ export default function PostList() {
           <li className="card w-[30%] min-w-[250px]" key={post.id}>
             <article className="card-body">
               <h3 className="mb-3 text-lg font-semibold">{post.title}</h3>
+              <CommentList postId={post.id} />
             </article>
           </li>
         ))}
