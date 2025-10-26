@@ -1,26 +1,28 @@
-import { useEffect, useMemo, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 import { postFetch } from "./fetchClient";
 
+const fetchPosts = async () => postFetch("posts");
+
 export default function PostList() {
-  const [posts, setPosts] = useState(null);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await postFetch("posts");
-      setPosts(response);
-    };
-
-    fetchPosts();
-  }, []);
+  const {
+    data: posts = {},
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["posts"],
+    queryFn: fetchPosts,
+  });
 
   const orderedPosts = useMemo(() => {
-    if (!posts) {
-      return [];
-    }
-
     const list = Object.values(posts);
     return list.sort((a, b) => a.title.localeCompare(b.title));
   }, [posts]);
+
+  if (isLoading) return <p>Loading posts...</p>;
+  if (isError) return <p role="alert">Error: {error.message}</p>;
+  if (!orderedPosts.length) return <p>No posts available.</p>;
 
   return (
     <div className="flex flex-row flex-wrap justify-between gap-4">
