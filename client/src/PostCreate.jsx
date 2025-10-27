@@ -9,9 +9,11 @@ const createPost = async (title) =>
   });
 
 export default function PostCreate() {
-  const feedbackId = useId();
+  const [title, setTitle] = useState("");
   const [fadeOut, setFadeOut] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+
+  const feedbackId = useId();
   const queryClient = useQueryClient();
 
   const { mutate, isPending, isError, error, isSuccess } = useMutation({
@@ -40,8 +42,6 @@ export default function PostCreate() {
       clearTimeout(hideTimer);
     };
   }, [showMessage]);
-
-  const [title, setTitle] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();

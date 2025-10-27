@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
+import CommentCreate from "./CommentCreate";
 import CommentList from "./CommentList";
 import { postFetch } from "./fetchClient";
 
@@ -45,10 +46,20 @@ export default function PostList() {
         aria-live="polite"
       >
         {orderedPosts.map((post) => (
-          <li className="card w-[30%] min-w-[250px]" key={post.id}>
-            <article className="card-body">
-              <h3 className="mb-3 text-lg font-semibold">{post.title}</h3>
+          <li
+            key={post.id}
+            className="card flex h-full w-[30%] min-w-[250px] flex-col"
+          >
+            <article className="flex flex-1 flex-col p-4">
+              <header className="mb-3 text-lg font-semibold">
+                <h3>{post.title}</h3>
+              </header>
+
               <CommentList postId={post.id} />
+
+              <footer className="mt-auto border-t pt-4">
+                <CommentCreate postId={post.id} />
+              </footer>
             </article>
           </li>
         ))}

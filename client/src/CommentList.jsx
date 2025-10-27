@@ -31,21 +31,24 @@ export default function CommentList({ postId }) {
 
   return (
     <>
-      <h3 id="comments" className="sr-only">
-        Comments
-      </h3>
-
-      <ul
-        className="list-disc space-y-1 pl-5"
-        aria-labelledby="comments"
-        aria-live="polite"
-      >
-        {data.map((comment) => (
-          <li key={comment.id} className="text-sm text-gray-800">
-            {comment.content}
-          </li>
-        ))}
-      </ul>
+      {data.length > 0 && (
+        <>
+          <h3 id="comments" className="sr-only">
+            Comments
+          </h3>
+          <ul
+            className="mb-3 list-disc space-y-1 pl-5"
+            aria-labelledby="comments"
+            aria-live="polite"
+          >
+            {data.map((comment) => (
+              <li key={comment.id} className="text-sm text-gray-800">
+                {comment.content}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </>
   );
 }
