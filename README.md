@@ -6,7 +6,7 @@ Implementation and analysis of microservices trade-offs
 
 Best suited for smaller teams/projects needing fast delivery and simplicity over distributed scalability
 
-<img width="991" height="398" alt="monolith architecture" src="https://github.com/user-attachments/assets/bd6eebc0-65be-40d9-a2a2-4c25368eb8fd" />
+<img width="991" height="auto" alt="traditional monolith architecture" src="./assets/1. monolith architecture.png"/>
 
 ### Pros:
 
@@ -25,12 +25,12 @@ Best suited for smaller teams/projects needing fast delivery and simplicity over
 
 ## Microservices Approach #1: Sync Communication
 
-<img width="1075" height="460" alt="sync microservices architecture" src="https://github.com/user-attachments/assets/30c1fe9d-882e-43ed-8b3e-ec3b922d30a9" />
+<img width="1075" height="auto" alt="sync microservices architecture" src="./assets/2. sync microservices architecture.png" />
 
 ## Microservices Approach #2: Async Communication
 
-<img width="1071" height="989" alt="async microservices architecture" src="https://github.com/user-attachments/assets/16b7187b-1e7c-4304-bc1c-6982c285c880" />
+<img width="1071" height="auto" alt="async microservices architecture" src="./assets/3. async microservices architecture.png"/>
 
 ## Microservices Approach #3: Orchestrated Async Communication
 
-<img width="1581" height="1361" alt="async microservices architecture orchestrated" src="https://github.com/user-attachments/assets/b06877b8-6f3b-4eb5-b811-d78c720f861d" />
+<img width="1581" height="auto" alt="async microservices architecture orchestrated" src="./assets/4. async microservices architecture orchestrated.png" />
