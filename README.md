@@ -22,3 +22,15 @@ Best suited for smaller teams/projects needing fast delivery and simplicity over
 - Harder to adopt new technologies due to tight integration
 - More prone to full-system outages from a single failure
 - Cumbersome to manage a growing codebase and release cycles
+
+## Microservices Approach #1: Sync Communication
+
+<img width="1075" height="460" alt="sync microservices architecture" src="https://github.com/user-attachments/assets/30c1fe9d-882e-43ed-8b3e-ec3b922d30a9" />
+
+## Microservices Approach #2: Async Communication
+
+<img width="1071" height="989" alt="async microservices architecture" src="https://github.com/user-attachments/assets/16b7187b-1e7c-4304-bc1c-6982c285c880" />
+
+## Microservices Approach #3: Orchestrated Async Communication
+
+<img width="1581" height="1361" alt="async microservices architecture orchestrated" src="https://github.com/user-attachments/assets/b06877b8-6f3b-4eb5-b811-d78c720f861d" />
