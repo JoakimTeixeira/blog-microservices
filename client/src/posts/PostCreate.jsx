@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useId, useState } from "react";
-import { postFetch } from "./fetchClient";
+import { postFetch } from "../api/fetchClient";
 
 const createPost = async (title) =>
   postFetch("posts", {

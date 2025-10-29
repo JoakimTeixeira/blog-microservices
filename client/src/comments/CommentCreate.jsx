@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { commentFetch } from "./fetchClient";
+import { commentFetch } from "../api/fetchClient";
 
 const createComment = async ({ postId, content }) =>
   commentFetch(`posts/${postId}/comments`, {

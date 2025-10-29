@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
-import CommentCreate from "./CommentCreate";
-import CommentList from "./CommentList";
-import { postFetch } from "./fetchClient";
+import { postFetch } from "../api/fetchClient";
+import CommentCreate from "../comments/CommentCreate";
+import CommentList from "../comments/CommentList";
 
 const fetchPosts = async () => postFetch("posts");
 

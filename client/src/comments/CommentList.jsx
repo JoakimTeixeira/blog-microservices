@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { commentFetch } from "./fetchClient";
+import { commentFetch } from "../api/fetchClient";
 
 const fetchComments = async (postId) =>
   commentFetch(`posts/${postId}/comments`);
