@@ -4,24 +4,28 @@ Implementation and analysis of microservices trade-offs
 
 ## Traditional approach: Monolith
 
-Best suited for smaller teams/projects needing fast delivery and simplicity over distributed scalability
+Ideal for small to medium teams working on single business domain, early-stage products, limited DevOps resources, or predictable traffic patterns that prioritize fast delivery over distributed scalability
 
 <img width="991" height="auto" alt="traditional monolith architecture" src="./assets/1. monolith architecture.png"/>
 
-### Pros:
+### Pros
 
-- Easier to deploy as a single codebase
-- Faster intercommunication between modules
-- Simpler to maintain transactional data consistency
-- Lower overall computational and infrastructure costs
+- **Deployment simplicity:** Everything bundled as one unit
+- **Development efficiency:** One codebase speeds up local debugging and simplifies setup
+- **Lower latency:** In-process calls avoid network delays, serialization, and retries
+- **Database consistency:** One ACID database eliminates distributed transactions
+- **Infrastructure simplicity:** Fewer services reduce DevOps complexity and simplify CI/CD
+- **Testing/monitoring ease:** No need to track requests across multiple services or create API contract tests
+- **Efficiency at small-medium scale:** Less processing, network, and infrastructure overhead (no extra services)
 
-### Cons:
+### Cons
 
-- Harder to scale or isolate specific modules
-- Riskier deployments due to shared dependencies
-- Harder to adopt new technologies due to tight integration
-- More prone to full-system outages from a single failure
-- Cumbersome to manage a growing codebase and release cycles
+- **Scaling limitations:** Must scale the entire application even when only certain parts are under heavy load
+- **Blast radius issues:** Deployments and rollbacks affect the entire system
+- **Slower releases:** More coordination, longer build and test cycles as organization grows
+- **Zero-downtime complexity:** Requires rolling deployments, blue-green, or canary releases
+- **Coupling tendency:** Higher maintenance cost and harder refactors over time (mitigated by modular design)
+- **Single-process failure risk:** Needs health checks, automatic restarts, and load balancer instances
 
 ## Microservices Approach #1: Sync Communication
 
